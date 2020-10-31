@@ -9,6 +9,8 @@ public class MazeGenerator : MonoBehaviour
 
     public GameObject blockParent;
 
+    public GameObject player;
+
     public int size;
 
     private bool[,] maze;
@@ -22,6 +24,8 @@ public class MazeGenerator : MonoBehaviour
             for (int x = 0; x < size; x++) {
                 if (maze[z, x]) {
                     CreateChildPrefab(blockPrefab, blockParent, x, 1, z);
+                    CreateChildPrefab(blockPrefab, blockParent, x, 2, z);
+                    // CreateChildPrefab(blockPrefab, blockParent, x, 3, z);
                 }
 
                 CreateChildPrefab(blockPrefab, blockParent, x, 0, z);
@@ -62,7 +66,7 @@ public class MazeGenerator : MonoBehaviour
                 }
             }
         }
-
+        Instantiate(player, new Vector3(1, 3, 1), Quaternion.identity);
         return map;
     }
 
